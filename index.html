@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Switcher</title>
+  <style>
+    .container {
+      text-align: center;
+      margin-top: 50px;
+    }
+    #image {
+      max-width: 100%;
+      height: auto;
+    }
+    #leftButton {
+      font-size: 16px;
+      transition: font-size 0.3s ease, transform 0.2s ease;
+      background-color: #ff7eb9; /* 粉红色背景 */
+      color: white; /* 白色文字 */
+      border: none;
+      padding: 10px 20px;
+      border-radius: 10px; /* 圆角按钮 */
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 阴影效果 */
+    }
+    #leftButton:hover {
+      background-color: #ff6fa8; /* 悬停时更深的粉红色 */
+      transform: scale(1.05); /* 悬停时稍微放大 */
+    }
+    #rightButton {
+      font-size: 16px;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      background-color: #007bff; /* 蓝色背景 */
+      color: white; /* 白色文字 */
+      border: none;
+      padding: 10px 20px;
+      border-radius: 10px; /* 圆角按钮 */
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 阴影效果 */
+    }
+    #rightButton:hover {
+      background-color: #0056b3; /* 悬停时更深的蓝色 */
+      transform: scale(1.05); /* 悬停时稍微放大 */
+    }
+    #image {
+      width: 300px; /* 固定宽度 */
+      height: 200px; /* 固定高度 */
+      object-fit: contain; /* 等比例缩放，完整显示图片 */
+      /*background-color: #f0f0f0; !* 背景色填充空白区域 *!*/
+      /*border: 2px solid #ccc; !* 可选：添加边框 *!*/
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <img id="image" src="/image/image1.png" alt="Image 1">
+  <p id="message"><b>画家小姐，可以和我在一起吗？</b></p>
+  <div>
+    <button id="leftButton">可以</button>
+    <button id="rightButton">不可以</button>
+  </div>
+</div>
+
+<script>
+
+  const images = ["/image/image1.png", "/image/image2.png", "/image/image3.png", "/image/image4.png",
+    "/image/image5.png"]; // 图片路径数组
+  // const rightButtonTexts = ["不要", "你确定？", "那不然和谁在一起？", "希望你之后别求我", "不要选这个！"]; // 右边按钮文本数组
+  const rightButtonTexts = ["不可以", "为什么？", "你要不再想想", "不要选这个", "不许选这个！"]; // 右边按钮文本数组
+  let currentImageIndex = 0;
+  let currentTextIndex = 0;
+  const imageElement = document.getElementById("image");
+  const leftButton = document.getElementById("leftButton");
+  const rightButton = document.getElementById("rightButton");
+
+  rightButton.addEventListener("click", () => {
+
+
+
+    // 让左边按钮的字体变大
+    const currentFontSize = parseFloat(window.getComputedStyle(leftButton).fontSize);
+    leftButton.style.fontSize = `${currentFontSize + 10}px`;
+    if (currentTextIndex < rightButtonTexts.length - 1){
+      // 切换右边按钮的文本
+      currentTextIndex = (currentTextIndex + 1) % rightButtonTexts.length;
+      rightButton.textContent = rightButtonTexts[currentTextIndex];
+      // 切换图片
+      currentImageIndex = (currentImageIndex + 1) % images.length;
+      imageElement.src = images[currentImageIndex];
+
+    }
+
+  });
+
+
+  leftButton.addEventListener("click", () => {
+    window.location.href = "another-page.html"; // 跳转到另一个页面
+  });
+</script>
+</body>
+</html>
