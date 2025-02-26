@@ -54,8 +54,8 @@
 </head>
 <body>
 <div class="container">
-  <img id="image" src="/image/image1.png" alt="Image 1">
-  <p id="message"><b>画家小姐，可以和我在一起吗？</b></p>
+  <img id="image" src="./qinche/1.png" alt="Image 1">
+  <p id="message"><b>小狸花，可以和我在一起吗？</b></p>
   <div>
     <button id="leftButton">可以</button>
     <button id="rightButton">不可以</button>
@@ -64,10 +64,12 @@
 
 <script>
 
-  const images = ["/image/image1.png", "/image/image2.png", "/image/image3.png", "/image/image4.png",
-    "/image/image5.png"]; // 图片路径数组
-  // const rightButtonTexts = ["不要", "你确定？", "那不然和谁在一起？", "希望你之后别求我", "不要选这个！"]; // 右边按钮文本数组
-  const rightButtonTexts = ["不可以", "为什么？", "你要不再想想", "不要选这个", "不许选这个！"]; // 右边按钮文本数组
+  // const images = ["/image/image1.png", "/image/image2.png", "/image/image3.png", "/image/image4.png",
+  //   "/image/image5.png"]; // 图片路径数组
+  const images = ["./qinche/1.png", "./qinche/2.png", "./qinche/3.png", "./qinche/4.png",
+    "./qinche/5.png"]; // 图片路径数组
+  const rightButtonTexts = ["不要", "你确定？", "那不然和谁在一起？", "希望你之后别求我", "不要选这个！"]; // 右边按钮文本数组
+  // const rightButtonTexts = ["不可以", "为什么？", "你要不再想想", "不要选这个", "不许选这个！"]; // 右边按钮文本数组
   let currentImageIndex = 0;
   let currentTextIndex = 0;
   const imageElement = document.getElementById("image");
